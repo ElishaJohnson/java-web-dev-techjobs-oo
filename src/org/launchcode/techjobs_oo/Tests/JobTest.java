@@ -7,8 +7,8 @@ import org.launchcode.techjobs_oo.*;
 import static org.junit.Assert.*;
 
 public class JobTest {
-    Job jobA = new Job();
-    Job jobB = new Job();
+    private Job jobA = new Job();
+    private Job jobB = new Job();
 
     @Test
     public void testSettingJobId() {
@@ -19,10 +19,10 @@ public class JobTest {
     public void testJobConstructorSetsAllFields() {
         jobA = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertEquals(jobA.getName(), "Product tester");
-        assertTrue(jobA.getEmployer() instanceof Employer);
-        assertTrue(jobA.getLocation() instanceof  Location);
-        assertTrue(jobA.getPositionType() instanceof PositionType);
-        assertTrue(jobA.getCoreCompetency() instanceof  CoreCompetency);
+        assertEquals(jobA.getEmployer().getValue(), "ACME");
+        assertEquals(jobA.getLocation().getValue(),  "Desert");
+        assertEquals(jobA.getPositionType().getValue(), "Quality control");
+        assertEquals(jobA.getCoreCompetency().getValue(), "Persistence");
     }
 
     @Test

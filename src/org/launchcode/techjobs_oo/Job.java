@@ -28,6 +28,52 @@ public class Job {
     }
 
     @Override
+    public String toString() {
+        String blank = "Data not available";
+        boolean idOnly = true;
+        String name;
+        String employer;
+        String location;
+        String positionType;
+        String coreCompetency;
+        if (this.name != null && !this.name.isBlank()) {
+            name = this.name;
+            idOnly = false;
+        } else {
+            name = blank;
+        }
+        if (this.employer != null && !this.employer.getValue().isBlank()) {
+            employer = this.employer.toString();
+            idOnly = false;
+        } else {
+            employer = blank;
+        }
+        if (this.location != null && !this.location.getValue().isBlank()) {
+            location = this.location.toString();
+            idOnly = false;
+        } else {
+            location = blank;
+        }
+        if (this.positionType != null && !this.positionType.getValue().isBlank()) {
+            positionType = this.positionType.toString();
+            idOnly = false;
+        } else {
+            positionType = blank;
+        }
+        if (this.coreCompetency != null && !this.coreCompetency.getValue().isBlank()) {
+            coreCompetency = this.coreCompetency.toString();
+            idOnly = false;
+        } else {
+            coreCompetency = blank;
+        }
+        if (idOnly) {
+            return "\nID: " + id + "\nOOPS! This job does not seem to exist.\n\n";
+        } else {
+            return ("\nID: " + id + "\nName: " + name + "\nEmployer: " + employer + "\nLocation: " + location + "\nPosition Type: " + positionType + "\nCore Competency: " + coreCompetency + "\n\n");
+        }
+    }
+
+    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -83,4 +129,5 @@ public class Job {
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
     }
+
 }
